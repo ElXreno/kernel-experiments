@@ -80,7 +80,7 @@ Summary: The Linux kernel
 # For non-released -rc kernels, this will be appended after the rcX and
 # gitX tags, so a 3 here would become part of release "0.rcX.gitX.3"
 #
-%global baserelease 300
+%global baserelease 301
 %global fedora_build %{baserelease}
 
 # base_sublevel is the kernel version we're starting with and patching
@@ -863,6 +863,10 @@ Patch103: arm64-tegra-Use-valid-PWM-period-for-VDD_GPU-on-Tegra210.patch
 
 # https://lkml.org/lkml/2020/8/14/221
 Patch104: dma-pool-fixes.patch
+
+# Only require sector size alignment for parent eb bytenr
+# Fixes btrfs balancing on converted partition
+Patch888: btrfs-Only-require-sector-size-alignment-for-parent-eb-bytenr.patch
 # END OF PATCH DEFINITIONS
 
 %endif
@@ -2967,6 +2971,9 @@ fi
 #
 #
 %changelog
+* Mon Aug 24 2020 ElXreno <elxreno@gmail.com> - 5.8.3-301
+- Include patch from patchwork #11377583
+
 * Fri Aug 21 2020 Justin M. Forbes <jforbes@fedoraproject.org> - 5.8.3-300
 - Linux v5.8.3
 
