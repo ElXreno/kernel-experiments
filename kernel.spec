@@ -80,7 +80,7 @@ Summary: The Linux kernel
 # For non-released -rc kernels, this will be appended after the rcX and
 # gitX tags, so a 3 here would become part of release "0.rcX.gitX.3"
 #
-%global baserelease 200
+%global baserelease 201
 %global fedora_build %{baserelease}
 
 # base_sublevel is the kernel version we're starting with and patching
@@ -885,6 +885,10 @@ Patch124: 0001-PCI-Add-MCFG-quirks-for-Tegra194-host-controllers.patch
 
 # Work around a bug in gcc https://gcc.gnu.org/bugzilla/show_bug.cgi?id=96377
 Patch126: 0001-Work-around-for-gcc-bug-https-gcc.gnu.org-bugzilla-s.patch
+
+# Only require sector size alignment for parent eb bytenr
+# Fixes btrfs balancing on converted partition
+Patch888: btrfs-Only-require-sector-size-alignment-for-parent-eb-bytenr.patch
 
 # END OF PATCH DEFINITIONS
 
@@ -2990,6 +2994,9 @@ fi
 #
 #
 %changelog
+* Fri Aug 14 2020 ElXreno <elxreno@gmail.com> - 5.7.15-201
+- Include patch from patchwork #11377583
+
 * Tue Aug 11 2020 Justin M. Forbes <jforbes@fedoraproject.org> - 5.7.15-200
 - Linux v5.7.15
 
