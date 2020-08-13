@@ -80,7 +80,7 @@ Summary: The Linux kernel
 # For non-released -rc kernels, this will be appended after the rcX and
 # gitX tags, so a 3 here would become part of release "0.rcX.gitX.3"
 #
-%global baserelease 201
+%global baserelease 202
 %global fedora_build %{baserelease}
 
 # base_sublevel is the kernel version we're starting with and patching
@@ -889,6 +889,8 @@ Patch126: 0001-Work-around-for-gcc-bug-https-gcc.gnu.org-bugzilla-s.patch
 # Only require sector size alignment for parent eb bytenr
 # Fixes btrfs balancing on converted partition
 Patch888: btrfs-Only-require-sector-size-alignment-for-parent-eb-bytenr.patch
+
+Patch889: 0001-drm-i915-gt-Restore-Cherryview-back-to-full-ppgtt.patch
 
 # END OF PATCH DEFINITIONS
 
@@ -2994,6 +2996,9 @@ fi
 #
 #
 %changelog
+* Fri Aug 14 2020 ElXreno <elxreno@gmail.com> - 5.7.15-202
+- Include patch from cgit.freedesktop.org/drm-intel
+
 * Fri Aug 14 2020 ElXreno <elxreno@gmail.com> - 5.7.15-201
 - Include patch from patchwork #11377583
 
