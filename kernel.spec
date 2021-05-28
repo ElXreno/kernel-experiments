@@ -114,7 +114,7 @@ Summary: The Linux kernel
 %define patchlevel 12
 
 # allow pkg_release to have configurable %%{?dist} tag
-%define specrelease 301%{?buildid}%{?dist}
+%define specrelease 302%{?buildid}%{?dist}
 
 %define pkg_release %{specrelease}
 
@@ -779,6 +779,9 @@ Source4000: README.rst
 Patch1: patch-%{stableversion}-redhat.patch
 %endif
 
+# Add multiple kswapd threads support
+Patch200: 0001-vmscan-Support-multiple-kswapd-threads-per-node.patch
+
 # empty final patch to facilitate testing of kernel patches
 Patch999999: linux-kernel-test.patch
 
@@ -1287,6 +1290,8 @@ cp -a %{SOURCE1} .
 
 ApplyOptionalPatch patch-%{stableversion}-redhat.patch
 %endif
+
+ApplyOptionalPatch 0001-vmscan-Support-multiple-kswapd-threads-per-node.patch
 
 ApplyOptionalPatch linux-kernel-test.patch
 
