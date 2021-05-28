@@ -114,7 +114,7 @@ Summary: The Linux kernel
 %define patchlevel 12
 
 # allow pkg_release to have configurable %%{?dist} tag
-%define specrelease 300%{?buildid}%{?dist}
+%define specrelease 301%{?buildid}%{?dist}
 
 %define pkg_release %{specrelease}
 
